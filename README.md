@@ -1,28 +1,29 @@
-# Monter une infra dans le Cloud – Terraform
+# Monter l'infra de recette sur AWS avec Terraform
 
 Terraform permet de créer de manière programmable une infrastructure dans le Cloud pour notre application.
 
-## Infrastructure déjà paramétrée
-Nous fournissons une configuration partielle de l'infra à mettre en place.
+## Code de l'infrastructure - partie fournie
+Nous fournissons une configuration partielle de l'infra.
 
 ### Détails des fichiers existants
-- `vpc` : réseau privé, découpé en 2 subnets.
-- `security_groups` : règles de sécurité pour gérer les permissions de flux entre les ressources
+- `vpc.tf` : création d'un réseau privé, découpé en 2 subnets
+- `security_groups.tf` : création des règles de permissions de flux entre les ressources
 - les variables sont définies dans chacun des fichiers Terraform, excéptées les variables partagées qui se trouvent dans `variables.tf`
 
-## Infrastructure à mettre en place
+## Code de l'infrastructure - partie restant à implémenter
 Il nous reste à mettre en place les autres briques de l'infra.
 
 ### Détails des fichiers à compléter
-- `frontends.tf`
-- `backend.tf`
+- `frontends.tf` : création du load balancer et des serveurs frontend
+- `backend.tf` : création de la base de données MySQL depuis un snapshot RDS.
+
 Les variables à utiliser sont données dans ces 2 fichiers.
 
 ## Commandes Terraform
 
-Pour cet exercice nous n'utilisons pas de "remote states". Toutes les commandes TF doivent être exécutées depuis la même machine pour une même stack.
+Pour cet exercice nous n'utilisons pas de "remote state" (centralisation du fichier décrivant l'état d'une stack). Nous exécuterons donc toutes les commandes Terraform depuis la même machine pour une même stack.
 
-Une fois vos fichiers TF complétés, pour créer votre stack :
+Une fois vos fichiers Terraform complétés, pour créer votre stack :
 ```bash
 cd app/terraform
 terraform plan
