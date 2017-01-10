@@ -15,13 +15,14 @@ Il nous reste à mettre en place les autres briques de l'infra.
 
 ### Détails des fichiers à compléter
 - `frontends.tf` : création du load balancer et des serveurs frontend
-- `backend.tf` : création de la base de données MySQL depuis un snapshot RDS.
+- `backend.tf` : création de la base de données MySQL depuis un snapshot
 
 Les variables à utiliser sont données dans ces 2 fichiers.
 
 ## Commandes Terraform
 
 Pour cet exercice nous n'utilisons pas de "remote state" (centralisation du fichier décrivant l'état d'une stack). Nous exécuterons donc toutes les commandes Terraform depuis la même machine pour une même stack.
+
 
 Une fois vos fichiers Terraform complétés, pour créer votre stack :
 ```bash
