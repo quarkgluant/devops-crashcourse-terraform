@@ -20,8 +20,11 @@ Les variables à utiliser sont données dans ces 2 fichiers.
 
 ## Commandes Terraform
 
-Une fois vos fichiers TF complétés, pour créer votre stack
-1. assurez vous que vos credentials AWS sont correctement paramétrés, en executant `aws describe-instances` par exemple
-1. placez vous dans le dossier contenant vos fichiers TF
-1. `terraform plan`
-1. `terraform apply`
+Pour cet exercice nous n'utilisons pas de "remote states". Toutes les commandes TF doivent être exécutées depuis la même machine pour une même stack.
+
+Une fois vos fichiers TF complétés, pour créer votre stack :
+```bash
+cd app/terraform
+terraform plan
+terraform apply
+```
