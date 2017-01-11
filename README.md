@@ -26,7 +26,6 @@ Pour cet exercice nous n'utilisons pas de "remote state" (centralisation du fich
 
 Une fois vos fichiers Terraform complétés, pour créer votre stack :
 ```bash
-cd app/terraform
 terraform plan
 terraform apply
 ```
