@@ -30,3 +30,8 @@ cd app/terraform
 terraform plan
 terraform apply
 ```
+
+Et pour détruire une stack Terraform :
+```bash
+terraform destroy
+```
