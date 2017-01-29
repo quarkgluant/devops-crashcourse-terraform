@@ -11,10 +11,6 @@ variable db_instance_type {
   default = "db.t1.micro"
 }
 
-variable db_name {
-  default = "attendeelist"
-}
-
 variable db_user {
   default = "admin"
 }
@@ -23,6 +19,7 @@ variable db_password {
   default = "devops2017"
 }
 
+# The name of the database is already in the snapshot
 variable db_snapshot {
   default = "arn:aws:rds:eu-west-1:446240913558:snapshot:devops-crashcourse"
 }

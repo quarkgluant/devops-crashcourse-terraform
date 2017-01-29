@@ -39,11 +39,6 @@ resource "aws_elb" "front" {
   # see https://www.terraform.io/docs/providers/aws/r/elb.html
 }
 
-resource "aws_elb_attachment" "front" {
-  # TO DO
-  # see https://www.terraform.io/docs/providers/aws/r/elb_attachment.html
-}
-
 ### Outputs
 output "elb_endpoint" {
   # TO DO
