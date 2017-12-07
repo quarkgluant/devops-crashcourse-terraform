@@ -1,6 +1,6 @@
 ### Variables
 variable db_storage {
-  default = "5"
+  default = "20"
 }
 
 variable db_engine {
@@ -8,7 +8,7 @@ variable db_engine {
 }
 
 variable db_instance_type {
-  default = "db.t1.micro"
+  default = "db.t2.micro"
 }
 
 variable db_user {
