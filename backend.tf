@@ -21,7 +21,7 @@ variable db_password {
 
 # The name of the database is already in the snapshot
 variable db_snapshot {
-  default = "arn:aws:rds:eu-central-1:159571505100:snapshot:attendeelist"
+  default = "arn:aws:rds:eu-west-1:159571505100:snapshot:attendeelist"
 }
 
 ### Resources
