@@ -25,26 +25,51 @@ variable front_elb_protocol {
 
 ### Resources
 resource "aws_key_pair" "front" {
-  key_name   = "${var.project_name}-front"
+  key_name   = "formationAWS"
   public_key = "${var.public_key}"
 }
 
 resource "aws_instance" "front" {
   # TO DO
   # see https://www.terraform.io/docs/providers/aws/r/instance.html
+  count                  = "${var.front_instance_number}"
+  ami                    = "${var.front_ami}"
+  instance_type          = "${var.front_instance_type}"
+  subnet_id              = "${aws_subnet.public.*.id[count.index]}"
+  vpc_security_group_ids = ["${aws_security_group.front.id}"]
+  key_name               = "${aws_key_pair.front.key_name}"
+
+  tags {
+    Name = "${var.project_name}-front-${count.index}"
+  }
 }
 
 resource "aws_elb" "front" {
-  # TO DO
-  # see https://www.terraform.io/docs/providers/aws/r/elb.html
+  name            = "${var.project_name}-front-elb"
+  subnets         = ["${aws_subnet.public.*.id}"]
+  security_groups = ["${aws_security_group.elb.id}"]
+  instances       = ["${aws_instance.front.*.id}"]
+
+  listener {
+    instance_port     = "${var.front_elb_port}"
+    instance_protocol = "${var.front_elb_protocol}"
+    lb_port           = "${var.front_elb_port}"
+    lb_protocol       = "${var.front_elb_protocol}"
+  }
+
+  tags {
+    Name = "${var.project_name}-front-elb"
+  }
 }
 
 ### Outputs
 output "elb_endpoint" {
   # TO DO
   # see https://www.terraform.io/intro/getting-started/outputs.html
+  value = "${aws_elb.front.dns_name}"
 }
 
 output "instance_ip" {
   # TO DO
+  value = ["${aws_instance.front.*.public_ip}"]
 }
